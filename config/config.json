@@ -1,0 +1,46 @@
+{
+    "spark": {
+        "app_name": "AppExecution",
+        "master": "local[*]"
+    },
+    "reads": [
+        {
+            "view_name": "sales_df",
+            "format": "csv",
+            "path": "data/data.csv",
+            "options": {
+                "header": "true",
+                "inferSchema": "true"
+            }
+        },
+        {
+            "view_name": "json_df",
+            "format": "json",
+            "path": "data/data.json",
+            "options": {
+            }
+        }
+    ],
+    "transformations": [
+        {
+            "query": "SELECT * FROM sales_df WHERE sales is not null",
+            "view_name": "sales_df"
+        },
+        {
+            "query": "SELECT id, region FROM json_df",
+            "view_name": "json_df"
+        },
+        {
+            "query": "SELECT s.name, s.sales, s.date, j.region FROM sales_df s LEFT JOIN json_df j ON s.id = j.id",
+            "view_name": "final_output"
+        }
+    ],
+    "writes": [
+        {
+            "view_name": "final_output",
+            "format": "csv",
+            "path": "data/output_data.csv",
+            "mode": "overwrite"
+        }
+    ]
+}
