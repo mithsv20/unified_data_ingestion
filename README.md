@@ -21,12 +21,11 @@ Here’s what you’ll find in this repository:
 
 ```
 pyspark_framework/
-│
+│── main.py                   # Main execution file
 ├── config/                   # Contains configuration files
 │   └── config.json           # JSON file with read, transform, and write settings
 │
 ├── src/                      # Contains all the source code
-│   ├── main.py               # Main execution file
 │   ├── spark_utils.py        # Utility functions for Spark
 │   ├── json_parser.py        # Load JSON configurations
 │   ├── reads.py              # Functions to read data

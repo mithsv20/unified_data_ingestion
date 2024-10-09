@@ -1,9 +1,9 @@
 import os
-from spark_utils import init_spark
-from json_parser import load_config
-from reads import read_data
-from transformations import perform_transformations
-from writes import write_data
+from src.spark_utils import init_spark
+from src.json_parser import load_config
+from src.reads import read_data
+from src.transformations import perform_transformations
+from src.writes import write_data
 
 
 def main():

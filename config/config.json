@@ -24,14 +24,14 @@
     "transformations": [
         {
             "query": "SELECT * FROM sales_df WHERE sales is not null",
-            "view_name": "sales_df"
+            "view_name": "parsed_df"
         },
         {
             "query": "SELECT id, region FROM json_df",
-            "view_name": "json_df"
+            "view_name": "content_df"
         },
         {
-            "query": "SELECT s.name, s.sales, s.date, j.region FROM sales_df s LEFT JOIN json_df j ON s.id = j.id",
+            "query": "SELECT s.name, s.sales, s.date, j.region FROM parsed_df s LEFT JOIN content_df j ON s.id = j.id",
             "view_name": "final_output"
         }
     ],
@@ -39,7 +39,7 @@
         {
             "view_name": "final_output",
             "format": "csv",
-            "path": "data/output_data.csv",
+            "path": "data/output_data",
             "mode": "overwrite"
         }
     ]
